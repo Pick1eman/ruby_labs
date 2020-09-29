@@ -1,4 +1,5 @@
-require './lib/main'
+require './lib/data_temperature'
+require './lib/degrees_conversion'
 
 RSpec.describe DataTemperature do
   describe '#Converts' do
