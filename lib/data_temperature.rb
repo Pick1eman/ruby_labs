@@ -1,4 +1,4 @@
-class Data_
+class DataTemperature
   def initialize
     @value = 0
     @unit = ''
@@ -6,5 +6,4 @@ class Data_
   end
 
   attr_accessor :value, :unit, :unit_convert
-  attr_writer :value, :unit, :unit_convert
 end
