@@ -1,48 +1,39 @@
 class DegreesConversion
   def check_units(obj)
-    if (obj.unit == 'C') && (obj.unit_convert == 'F')
-      obj = convert_from_c_to_f(obj)
-    elsif (obj.unit == 'C') && (obj.unit_convert == 'K')
-      obj = convert_from_c_to_k(obj)
-    elsif (obj.unit == 'F') && (obj.unit_convert == 'K')
-      obj = convert_from_f_to_k(obj)
-    elsif (obj.unit == 'F') && (obj.unit_convert == 'C')
-      obj = convert_from_f_to_c(obj)
-    elsif (obj.unit == 'K') && (obj.unit_convert == 'F')
-      obj = convert_from_k_to_f(obj)
-    elsif (obj.unit == 'K') && (obj.unit_convert == 'C')
-      obj = convert_from_k_to_c(obj)
+    case obj.unit
+    when 'C'
+      convert_from_c(obj)
+    when 'F'
+      convert_from_f(obj)
+    when 'K'
+      convert_from_k(obj)
     end
-    obj
   end
 
-  def convert_from_c_to_f(obj)
-    obj.value = (obj.value * 1.8 + 32)
-    obj
+  def convert_from_c(obj)
+    case obj.unit_convert
+    when 'F'
+      (obj.value * 1.8 + 32)
+    when 'K'
+      (obj.value + 273.15)
+    end
   end
 
-  def convert_from_c_to_k(obj)
-    obj.value = (obj.value + 273.15)
-    obj
+  def convert_from_f(obj)
+    case obj.unit_convert
+    when 'K'
+      (5 * (obj.value - 32) / 9 + 273.15)
+    when 'C'
+      (5 * (obj.value - 32) / 9)
+    end
   end
 
-  def convert_from_f_to_c(obj)
-    obj.value = (5 * (obj.value - 32) / 9)
-    obj
-  end
-
-  def convert_from_f_to_k(obj)
-    obj.value = (5 * (obj.value - 32) / 9 + 273.15)
-    obj
-  end
-
-  def convert_from_k_to_c(obj)
-    obj.value = (obj.value - 273.15)
-    obj
-  end
-
-  def convert_from_k_to_f(obj)
-    obj.value = ((obj.value - 273.15) * 1.8 + 32)
-    obj
+  def convert_from_k(obj)
+    case obj.unit_convert
+    when 'F'
+      ((obj.value - 273.15) * 1.8 + 32)
+    when 'C'
+      (obj.value - 273.15)
+    end
   end
 end

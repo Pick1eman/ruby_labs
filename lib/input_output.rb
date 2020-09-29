@@ -7,14 +7,10 @@ class InputOutput
 
   def unit_input(obj)
     obj.unit = gets.strip
-    if (obj.unit != 'C') && (obj.unit != 'F') && (obj.unit != 'K')
-      obj.unit = ''
-      puts('Error')
-      return -1
-    end
     obj.unit_convert = gets.strip
-    if (obj.unit_convert != 'C') && (obj.unit_convert != 'F') && (obj.unit_convert != 'K')
-      obj.unit_convert = ''
+    if ((obj.unit || obj.unit_convert) != 'C') && ((obj.unit || obj.unit_convert) != 'F') \
+      && ((obj.unit || obj.unit_convert) != 'K')
+      obj.unit = ''
       puts('Error')
       return -1
     end
@@ -22,6 +18,6 @@ class InputOutput
   end
 
   def info_print(obj)
-    print('new value = ' + obj.value.to_s + "\n")
+    puts obj
   end
 end
