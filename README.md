@@ -1,6 +1,6 @@
 # Ruby labs
 
-![Unit Tests & Lint] (https://github.com/Stalker2973/ruby_labs/workflows/Unit%20Tests%20&%20Lint/badge.svg)
+![Unit Tests & Lint](https://github.com/Stalker2973/ruby_labs/workflows/Unit%20Tests%20&%20Lint/badge.svg)
 
 ### Description
 
