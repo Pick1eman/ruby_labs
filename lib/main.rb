@@ -1,14 +1,12 @@
-require 'csv'
-load './lib/analysis.rb'
+load 'lib/data_temperature.rb'
+load 'lib/degrees_conversion.rb'
+load 'lib/input_output.rb'
 
-a = CSV.read('./resources/data.csv')
-
-analysis = Analysis.new
-min = analysis.search_min_in_matrix(a)
-max = analysis.search_max_in_matrix(a)
-avg = analysis.average(a)
-var = analysis.variance(a)
-puts "Min value : #{min}"
-puts "Max value : #{max}"
-puts "Average value : #{avg}"
-puts "Variance value : #{var}"
+data = DataTemperature.new
+input = InputOutput.new
+data = input.degrees_input(data)
+data = input.unit_input(data)
+conversion = DegreesConversion.new
+data_value = conversion.check_units(data)
+output = InputOutput.new
+output.info_print(data_value)
